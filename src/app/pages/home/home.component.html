@@ -3,10 +3,44 @@
   [autosize]="true"
 >
   <mat-drawer mode="side" opened="true">
-    <div>Filters</div>
+    <div>
+      <app-filters (showCategory)="onShowCategory($event)" />
+    </div>
   </mat-drawer>
   <mat-drawer-content class="p-6">
     <app-products-header (columnsCountChange)="onColumnsCountChange($event)" />
-    {{ cols }}
+    <mat-grid-list gutterSize="16" [cols]="cols" [rowHeight]="rowHigh">
+      <mat-grid-tile>
+        <app-product-box class="w-full" [fullWidthMode]="cols === 1" />
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <app-product-box
+          class="w-full"
+          [fullWidthMode]="cols === 1"
+        /> </mat-grid-tile
+      ><mat-grid-tile>
+        <app-product-box
+          class="w-full"
+          [fullWidthMode]="cols === 1"
+        /> </mat-grid-tile
+      ><mat-grid-tile>
+        <app-product-box
+          class="w-full"
+          [fullWidthMode]="cols === 1"
+        /> </mat-grid-tile
+      ><mat-grid-tile>
+        <app-product-box
+          class="w-full"
+          [fullWidthMode]="cols === 1"
+        /> </mat-grid-tile
+      ><mat-grid-tile>
+        <app-product-box
+          class="w-full"
+          [fullWidthMode]="cols === 1"
+        /> </mat-grid-tile
+      ><mat-grid-tile>
+        <app-product-box class="w-full" [fullWidthMode]="cols === 1" />
+      </mat-grid-tile>
+    </mat-grid-list>
   </mat-drawer-content>
 </mat-drawer-container>
