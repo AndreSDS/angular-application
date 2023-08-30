@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { ListProductComponent } from './components/list-product/list-product.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './components/header/header.component';
-import { ProductServiceService } from './services/product-service.service';
+import { ProductService } from './services/product-service.service';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
@@ -15,6 +15,7 @@ import { ProductsHeaderComponent } from './pages/home/components/products-header
 import { FiltersComponent } from './pages/home/components/filters/filters.component';
 import { ProductBoxComponent } from './pages/home/components/product-box/product-box.component';
 import { CartComponent } from './pages/cart/cart.component';
+import { CartService } from './services/cart.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { CartComponent } from './pages/cart/cart.component';
     BrowserAnimationsModule,
     MaterialModule,
   ],
-  providers: [ProductServiceService],
+  providers: [ProductService, CartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

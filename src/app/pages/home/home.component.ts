@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Product } from 'src/app/models/product.model';
+import { CartService } from 'src/app/services/cart.service';
 
 const RowsHigh: {
   [key: string]: number
@@ -17,7 +19,9 @@ export class HomeComponent {
   rowHigh = RowsHigh[this.cols.toString()];
   category: string | undefined;
 
-  constructor() { }
+  constructor(
+    private cartService: CartService,
+  ) { }
 
   ngOnInit(): void { }
 
@@ -30,4 +34,13 @@ export class HomeComponent {
     this.category = newCategory;
   }
 
+  onAddToCart(product: Product): void {
+    this.cartService.addToCart({
+      product: product.image,
+      name: product.title,
+      price: product.price,
+      quantity: 1,
+      id: product.id,
+    });
+  }
 }

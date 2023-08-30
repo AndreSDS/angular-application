@@ -11,7 +11,7 @@ interface Product {
 @Injectable({
   providedIn: 'root'
 })
-export class ProductServiceService {
+export class ProductService {
   private apiUrl = 'https://fakestoreapi.com/products';
 
   constructor(
