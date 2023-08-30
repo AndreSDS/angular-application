@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { ProductServiceService } from 'src/app/services/product-service.service';
+import { ProductService } from 'src/app/services/product-service.service';
 
 interface Product {
   title: string;
@@ -18,11 +18,11 @@ export class ListProductComponent {
   >();
 
   constructor(
-    private productServiceService: ProductServiceService
+    private productService: ProductService
   ) { }
 
   ngOnInit(): void {
-    this.productList$ = this.productServiceService.fetchData().pipe(
+    this.productList$ = this.productService.fetchData().pipe(
       map((products: Product[]) => {
         return products.map((product: Product) => {
           return {
