@@ -11,7 +11,6 @@ interface Product {
 @Component({
   selector: 'app-list-product',
   templateUrl: './list-product.component.html',
-  styleUrls: ['./list-product.component.scss']
 })
 export class ListProductComponent {
   productList$: Observable<Product[]
