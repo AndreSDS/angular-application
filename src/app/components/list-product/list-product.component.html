@@ -1,0 +1,5 @@
+<p>Produtos</p>
+
+<ul *ngFor="let product of productList$ | async">
+  <li>{{ product.title }}</li>
+</ul>
