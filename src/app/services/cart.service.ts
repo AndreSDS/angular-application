@@ -29,4 +29,15 @@ export class CartService {
       duration: 3000,
     });
   }
+
+  getTotalCost(items: Array<CartItem>): number {
+    return items.map(t => t.price * t.quantity).reduce((acc, current) => acc + current, 0);
+  }
+
+  clearCart(): void {
+    this.cart.next({ items: [] });
+    this._snackBar.open('Cart cleared', 'Ok', {
+      duration: 3000,
+    });
+  }
 }
