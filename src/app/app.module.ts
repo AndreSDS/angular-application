@@ -12,6 +12,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { HomeComponent } from './pages/home/home.component';
 import { ProductsHeaderComponent } from './pages/home/components/products-header/products-header.component';
+import { FiltersComponent } from './pages/home/components/filters/filters.component';
+import { ProductBoxComponent } from './pages/home/components/product-box/product-box.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { ProductsHeaderComponent } from './pages/home/components/products-header
     NotFoundComponent,
     HomeComponent,
     ProductsHeaderComponent,
+    FiltersComponent,
+    ProductBoxComponent
   ],
   imports: [
     BrowserModule,
