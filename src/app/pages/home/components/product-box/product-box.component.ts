@@ -7,16 +7,8 @@ import { Product } from 'src/app/models/product.model';
 })
 export class ProductBoxComponent {
   @Input() fullWidthMode = false;
+  @Input() product: Product | undefined;
   @Output() addToCart = new EventEmitter();
-
-  product: Product | undefined = {
-    id: 1,
-    title: 'Product 1',
-    price: 100,
-    category: 'shoes',
-    description: 'Description 1',
-    image: 'https://picsum.photos/seed/1/200/300',
-  };
 
   constructor() { }
 
