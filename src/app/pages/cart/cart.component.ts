@@ -7,14 +7,7 @@ import { CartService } from 'src/app/services/cart.service';
   templateUrl: './cart.component.html',
 })
 export class CartComponent {
-  cart: Cart = {
-    items: [
-      { product: '"https://placehold.co/150"', name: 'snickears', price: 150, quantity: 1, id: 1 },
-      { product: '"https://placehold.co/150"', name: 'snickears', price: 150, quantity: 1, id: 2 },
-      { product: '"https://placehold.co/150"', name: 'snickears', price: 150, quantity: 1, id: 3 },
-      { product: '"https://placehold.co/150"', name: 'snickears', price: 150, quantity: 1, id: 4 },
-    ]
-  };
+  cart: Cart = { items: [] };
   dataSource: Array<CartItem> = [];
   displayedColumns: Array<string> = ['product', 'name', 'price', 'quantity', 'total', 'actions'];
 
@@ -24,14 +17,30 @@ export class CartComponent {
 
   ngOnInit(): void {
     this.dataSource = this.cart.items;
+    this.cartService.cart.subscribe((_cart: Cart) => {
+      this.cart = _cart;
+      this.dataSource = _cart.items;
+    });
+  }
+
+  onImproveQuantity(item: CartItem): void {
+    this.cartService.improveQuantity(item);
+  }
+
+  onReduceQuantity(item: CartItem): void {
+    this.cartService.reduceQuantity(item);
   }
 
   getTotalCost(items: Array<CartItem>): number {
     return this.cartService.getTotalCost(items);
   }
 
-  clearCart(): void {
-    this.cart.items = [];
+  onRemoveItem(item: CartItem): void {
+    this.cartService.removeItem(item);
+  }
+
+  onClearCart(): void {
+    this.cartService.clearCart();
   }
 
 }

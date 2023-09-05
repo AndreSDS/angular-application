@@ -30,8 +30,42 @@ export class CartService {
     });
   }
 
+  improveQuantity(item: CartItem): void {
+    const products = [...this.cart.value.items];
+
+    const productInCart = products.find((p) => p.id === item.id);
+
+    if (productInCart) {
+      productInCart.quantity++;
+    }
+
+    this.cart.next({ items: products });
+  };
+
+  reduceQuantity(item: CartItem): void {
+    const products = [...this.cart.value.items];
+
+    const productInCart = products.find((p) => p.id === item.id)!;
+
+    if (productInCart.quantity > 1) {
+      productInCart.quantity--;
+      this.cart.next({ items: products });
+    } else {
+      this.removeItem(item);
+    }
+  }
+
   getTotalCost(items: Array<CartItem>): number {
     return items.map(t => t.price * t.quantity).reduce((acc, current) => acc + current, 0);
+  }
+
+  removeItem(item: CartItem): void {
+    const products = this.cart.value.items.filter((p) => p.id !== item.id);
+
+    this.cart.next({ items: products });
+    this._snackBar.open('Product removed from cart', 'Ok', {
+      duration: 3000,
+    });
   }
 
   clearCart(): void {
